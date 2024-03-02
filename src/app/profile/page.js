@@ -1,9 +1,10 @@
 'use client';
 import { AuthContext } from '@/contexts/AuthContext';
-import React, { useContext } from 'react';
+import Image from 'next/image';
+import { useContext } from 'react';
 
 const ProfilePage = () => {
-  const { authenticated, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
 
   //   if (!authenticated) {
   //     // Redirect to login page if user is not authenticated
@@ -15,9 +16,11 @@ const ProfilePage = () => {
       <h1 className="text-3xl font-bold mb-4">Profile Page</h1>
       <div className="flex flex-col items-center">
         {/* User's profile picture */}
-        <img
+        <Image
           src="https://via.placeholder.com/150"
           alt="Profile Picture"
+          width={150} // Adjust width and height as needed
+          height={150}
           className="rounded-full h-24 w-24 mb-4"
         />
         {/* User's name */}

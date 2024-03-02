@@ -1,6 +1,6 @@
 'use client';
 import API from '@/api';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import withCheckAuth from '@/hooks/withCheckAuth';
 import useAuth from '@/hooks/useAuth';
 
@@ -74,9 +74,7 @@ const LoginForm = () => {
               />
             </div>
           </div>
-          {formErrors.message && (
-            <div className="text-red-500 text-sm">{formErrors.message}</div>
-          )}
+          {formErrors.message && <div className="text-red-500 text-sm">{formErrors.message}</div>}
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
@@ -85,19 +83,13 @@ const LoginForm = () => {
                 type="checkbox"
                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
               />
-              <label
-                htmlFor="remember-me"
-                className="ml-2 block text-sm text-gray-900"
-              >
+              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                 Remember me
               </label>
             </div>
 
             <div className="text-sm">
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
+              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
                 Forgot your password?
               </a>
             </div>
@@ -114,11 +106,8 @@ const LoginForm = () => {
         </form>
         <div className="text-center">
           <p className="mt-2 text-sm text-gray-600">
-            Don't have an account?{' '}
-            <a
-              href="#"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
+            Do not have an account?{' '}
+            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
               Register here
             </a>
           </p>

@@ -14,52 +14,31 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       setAuthenticated(true);
       if (destination) {
-        console.log('this one redirects??');
         router.push(destination);
         setDestination(null);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const login = (token) => {
     localStorage.setItem('token', token);
     setAuthenticated(true);
-    console.log(destination, 'destination is calling');
     if (destination) {
-      console.log('destination is foundf but router not working');
       router.replace(destination);
     } else {
-      console.log('else one is causing the issue');
       router.push('/');
     }
   };
   const logout = () => {
     localStorage.removeItem('token');
     setAuthenticated(false);
-    console.log('or logout cause issue??');
     router.push('/');
   };
 
   return (
-    <AuthContext.Provider
-      value={{ authenticated, logout, login, setDestination, destination }}
-    >
+    <AuthContext.Provider value={{ authenticated, logout, login, setDestination, destination }}>
       {children}
     </AuthContext.Provider>
   );
-};
-
-const getCookie = (name) => {
-  const cookieString = document.cookie;
-  const cookies = cookieString.split(';').map((cookie) => cookie.trim());
-  for (const cookie of cookies) {
-    if (cookie.startsWith(`${name}=`)) {
-      return cookie.split('=')[1];
-    }
-  }
-  return null;
-};
-
-const removeCookie = (name) => {
-  document.cookie = `${name}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 };

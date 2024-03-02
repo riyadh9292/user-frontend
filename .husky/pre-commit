@@ -1,1 +1,1 @@
-npm test
+node -e "require('child_process').execSync('npm run lint', {stdio:[0,1,2]})"

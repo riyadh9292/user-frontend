@@ -18,7 +18,6 @@ const UserDetailsPage = () => {
         const userDetails = await API.getUserDetails(userId);
         setUser(userDetails);
       } catch (error) {
-        console.error('Error fetching user details:', error.message);
         // Redirect to dashboard or show error message
       }
     };
@@ -31,7 +30,7 @@ const UserDetailsPage = () => {
   if (!user) {
     return <div>Loading...</div>;
   }
-  console.log(user);
+
   return (
     <div className="container mx-auto mt-8">
       <div className="flex items-center justify-center">
@@ -77,8 +76,7 @@ const UserDetailsPage = () => {
                   Email: {user?.email} | Profession: {user?.profession}
                 </p>
                 <p className="text-gray-700">
-                  Registered:{' '}
-                  {format(new Date(user?.createdAt), 'MMMM dd, yyyy')}
+                  Registered: {format(new Date(user?.createdAt), 'MMMM dd, yyyy')}
                 </p>
               </div>
             </div>

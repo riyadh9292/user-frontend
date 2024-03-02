@@ -1,13 +1,8 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.API_BASE_URL;
-
 const createUser = async (userData) => {
   try {
-    const response = await axios.post(
-      `http://localhost:5000/api/create-user`,
-      userData
-    );
+    const response = await axios.post(`http://localhost:5000/api/create-user`, userData);
     return response.data;
   } catch (error) {
     throw new Error(error.response.data);
@@ -16,10 +11,7 @@ const createUser = async (userData) => {
 
 const loginUser = async (credentials) => {
   try {
-    const response = await axios.post(
-      `http://localhost:5000/api/sign-in`,
-      credentials
-    );
+    const response = await axios.post(`http://localhost:5000/api/sign-in`, credentials);
     return response.data;
   } catch (error) {
     throw new Error(error.response.data);
@@ -39,15 +31,11 @@ const uploadFile = async (file) => {
   try {
     const formData = new FormData();
     formData.append('file', file);
-    const response = await axios.post(
-      `http://localhost:5000/api/upload`,
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      }
-    );
+    const response = await axios.post(`http://localhost:5000/api/upload`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return response.data.url;
   } catch (error) {
     throw new Error('Failed to upload file');
@@ -62,14 +50,11 @@ const getUserDetails = async (userId) => {
   }
 
   try {
-    const response = await axios.get(
-      `http://localhost:5000/api/user/${userId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await axios.get(`http://localhost:5000/api/user/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     throw new Error('Failed to get user details');

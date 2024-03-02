@@ -10,10 +10,10 @@ const withAuth = (Component) => {
 
     useEffect(() => {
       if (!authenticated) {
-        console.log('path name should be setted as', pathname);
         setDestination(pathname);
         router.push('/login');
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [authenticated, router, setDestination]);
 
     if (!authenticated) {

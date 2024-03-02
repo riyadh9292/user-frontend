@@ -1,9 +1,6 @@
-import { Inter } from 'next/font/google';
 import './globals.css';
 import NavBar from '@/components/NavBar';
 import { AuthProvider } from '@/contexts/AuthContext';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Create Next App',
@@ -16,9 +13,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className="min-h-screen">
           <NavBar />
-          <div className="flex justify-center items-center py-10">
-            {children}
-          </div>
+          <div className="flex justify-center items-center py-10">{children}</div>
         </body>
       </html>
     </AuthProvider>

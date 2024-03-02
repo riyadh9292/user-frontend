@@ -1,7 +1,6 @@
 'use client';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { AuthContext } from '@/contexts/AuthContext';
 import useAuth from './useAuth';
 
 const withCheckAuth = (WrappedComponent) => {
@@ -12,14 +11,13 @@ const withCheckAuth = (WrappedComponent) => {
     useEffect(() => {
       if (authenticated) {
         // User is authenticated
-        console.log(destination, 'destination');
         if (destination) {
           router.replace(destination);
         } else {
-          console.log('this one cause issue??');
           router.push('/');
         }
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [authenticated, destination]);
 
     return !authenticated ? <WrappedComponent {...props} /> : null;

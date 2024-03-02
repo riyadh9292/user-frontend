@@ -49,9 +49,7 @@ const RegisterPage = () => {
           return;
         }
 
-        const confirmed = window.confirm(
-          'Are you sure you want to upload this video?'
-        );
+        const confirmed = window.confirm('Are you sure you want to upload this video?');
         if (!confirmed) return;
 
         setFormErrors({ ...formErrors, video: '' });
@@ -124,8 +122,6 @@ const RegisterPage = () => {
       setFormErrors(errors);
       return;
     }
-    console.log(formData.profileImage, 'formData.profileImage');
-    console.log(formData.video, 'formData.formData.video  ');
 
     // Prepare form data to send to backend
     const userData = new FormData();
@@ -139,13 +135,10 @@ const RegisterPage = () => {
     userData.append('about', formData.about);
     userData.append('video', formData.video);
 
-    console.log(formData);
     try {
-      const userData = await API.createUser(formData);
-      console.log('Registration successful:', userData);
+      await API.createUser(formData);
       // Handle successful registration (e.g., redirect to home page)
     } catch (error) {
-      console.error('Registration failed:', error.message);
       // Handle registration error (e.g., display error message to user)
     }
     // Redirect to home page or login page after successful registration
@@ -157,10 +150,7 @@ const RegisterPage = () => {
       <h1 className="text-3xl font-bold mb-4">Register</h1>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             Full Name <span className="text-red-500">*</span>
           </label>
           <input
@@ -172,15 +162,10 @@ const RegisterPage = () => {
             required
             className={`mt-1 p-2 focus:outline-none w-full border ${formErrors.name ? 'border-red-500' : 'border-gray-300'} rounded-md`}
           />
-          {formErrors.name && (
-            <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>
-          )}
+          {formErrors.name && <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>}
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Email <span className="text-red-500">*</span>
           </label>
           <input
@@ -192,15 +177,10 @@ const RegisterPage = () => {
             required
             className={`mt-1 p-2 focus:outline-none w-full border ${formErrors.email ? 'border-red-500' : 'border-gray-300'} rounded-md`}
           />
-          {formErrors.email && (
-            <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
-          )}
+          {formErrors.email && <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>}
         </div>
         <div className="mb-4 relative">
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
             Password <span className="text-red-500">*</span>
           </label>
           <input
@@ -228,10 +208,7 @@ const RegisterPage = () => {
           )}
         </div>
         <div className="mb-4 relative">
-          <label
-            htmlFor="confirmPassword"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
             Confirm Password <span className="text-red-500">*</span>
           </label>
           <input
@@ -255,17 +232,12 @@ const RegisterPage = () => {
             />
           </span>
           {formErrors.confirmPassword && (
-            <p className="text-red-500 text-sm mt-1">
-              {formErrors.confirmPassword}
-            </p>
+            <p className="text-red-500 text-sm mt-1">{formErrors.confirmPassword}</p>
           )}
         </div>
 
         <div className="mb-4">
-          <label
-            htmlFor="username"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="username" className="block text-sm font-medium text-gray-700">
             Username <span className="text-red-500">*</span>
           </label>
           <input
@@ -282,10 +254,7 @@ const RegisterPage = () => {
           )}
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="profileImage"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="profileImage" className="block text-sm font-medium text-gray-700">
             Profile Image <span className="text-red-500">*</span>
           </label>
           <input
@@ -298,16 +267,11 @@ const RegisterPage = () => {
             className={`mt-1 p-2 focus:outline-none w-full border ${formErrors.profileImage ? 'border-red-500' : 'border-gray-300'} rounded-md`}
           />
           {formErrors.profileImage && (
-            <p className="text-red-500 text-sm mt-1">
-              {formErrors.profileImage}
-            </p>
+            <p className="text-red-500 text-sm mt-1">{formErrors.profileImage}</p>
           )}
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="video"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="video" className="block text-sm font-medium text-gray-700">
             Upload Video
           </label>
           <input
@@ -318,15 +282,10 @@ const RegisterPage = () => {
             onChange={handleChange}
             className={`mt-1 p-2 focus:outline-none w-full border ${formErrors.video ? 'border-red-500' : 'border-gray-300'} rounded-md`}
           />
-          {formErrors.video && (
-            <p className="text-red-500 text-sm mt-1">{formErrors.video}</p>
-          )}
+          {formErrors.video && <p className="text-red-500 text-sm mt-1">{formErrors.video}</p>}
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="profession"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="profession" className="block text-sm font-medium text-gray-700">
             Profession
           </label>
           <input
@@ -342,10 +301,7 @@ const RegisterPage = () => {
           )}
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="age"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="age" className="block text-sm font-medium text-gray-700">
             Age
           </label>
           <input
@@ -356,15 +312,10 @@ const RegisterPage = () => {
             onChange={handleChange}
             className={`mt-1 p-2 focus:outline-none w-full border ${formErrors.age ? 'border-red-500' : 'border-gray-300'} rounded-md`}
           />
-          {formErrors.age && (
-            <p className="text-red-500 text-sm mt-1">{formErrors.age}</p>
-          )}
+          {formErrors.age && <p className="text-red-500 text-sm mt-1">{formErrors.age}</p>}
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="gender"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="gender" className="block text-sm font-medium text-gray-700">
             Gender
           </label>
           <select
@@ -379,15 +330,10 @@ const RegisterPage = () => {
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
-          {formErrors.gender && (
-            <p className="text-red-500 text-sm mt-1">{formErrors.gender}</p>
-          )}
+          {formErrors.gender && <p className="text-red-500 text-sm mt-1">{formErrors.gender}</p>}
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="about"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="about" className="block text-sm font-medium text-gray-700">
             About
           </label>
           <textarea
@@ -398,9 +344,7 @@ const RegisterPage = () => {
             rows={4}
             className={`mt-1 p-2 focus:outline-none w-full border ${formErrors.about ? 'border-red-500' : 'border-gray-300'} rounded-md`}
           />
-          {formErrors.about && (
-            <p className="text-red-500 text-sm mt-1">{formErrors.about}</p>
-          )}
+          {formErrors.about && <p className="text-red-500 text-sm mt-1">{formErrors.about}</p>}
         </div>
         <div className="mb-4">
           <button
