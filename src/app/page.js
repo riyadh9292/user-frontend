@@ -22,7 +22,7 @@ export default function Home() {
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-bold mb-4">All Users</h1>
       <div className="grid grid-cols-3 gap-4">
-        {users.map((user) => (
+        {users?.map((user) => (
           <div key={user.id} className="border border-gray-200 p-4 rounded-lg">
             <Image
               src={user.profileImage}
