@@ -31,3 +31,9 @@ body {
     text-wrap: balance;
   }
 }
+
+.active {
+  color: #fff; /* Text color for active link */
+  font-weight: bold; /* Font weight for active link */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Text shadow for active link */
+}

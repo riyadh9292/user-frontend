@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "react/prop-types": "off", // Disable prop-types check
+    "react/react-in-jsx-scope": "off", // React is always in scope for JSX
+    "react/jsx-uses-react": "off", // React is always in scope for JSX
+    "react/display-name": "off" // Allow unnamed functional components
+  }
 }
